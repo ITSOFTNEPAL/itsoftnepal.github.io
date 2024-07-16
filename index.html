@@ -9,8 +9,8 @@
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white shadow-md rounded-lg p-6 max-w-md w-full">
         <h1 class="text-2xl font-bold mb-4">Server Update Available!</h1>
-        <p class="mb-2"><strong>Current Version:</strong> <span id="current-version">1.1.0</span></p>
-        <p class="mb-4"><strong>Latest Version:</strong> <span id="latest-version">1.2.0</span></p>
+        <p class="mb-2"><strong>Current Version:</strong> <span id="current-version"></span></p>
+        <p class="mb-4"><strong>Latest Version:</strong> <span id="latest-version"></span></p>
 
         <div id="update-notification" class="hidden">
             <p class="text-lg text-green-600 mb-2">An update is available!</p>
@@ -23,19 +23,22 @@
     </div>
 
     <script>
-        // Replace these with actual server values
-        const currentVersion = '1.1.0'; // Current server version
-        const latestVersion = '1.2.0'; // Latest version available
-        const downloadLink = 'https://example.com/download.zip'; // Link to download the update
+        // Get URL parameters
+        const params = new URLSearchParams(window.location.search);
+        const currentVersion = params.get('current_version');
+        const latestVersion = params.get('latest_version');
+        const downloadLink = 'https://example.com/download.zip'; // Replace with your actual download link
 
         document.getElementById('current-version').innerText = currentVersion;
         document.getElementById('latest-version').innerText = latestVersion;
 
-        if (currentVersion < latestVersion) {
-            document.getElementById('update-notification').classList.remove('hidden');
-            document.getElementById('download-link').setAttribute('href', downloadLink);
-        } else {
-            document.getElementById('no-update').classList.remove('hidden');
+        if (currentVersion && latestVersion) {
+            if (currentVersion < latestVersion) {
+                document.getElementById('update-notification').classList.remove('hidden');
+                document.getElementById('download-link').setAttribute('href', downloadLink);
+            } else {
+                document.getElementById('no-update').classList.remove('hidden');
+            }
         }
     </script>
 </body>
