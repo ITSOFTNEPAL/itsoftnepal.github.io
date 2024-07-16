@@ -1,5 +1,42 @@
-<html>
-  <head>
-    <title>ITSOFTNEPAL</title>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Update Download</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-md rounded-lg p-6 max-w-md w-full">
+        <h1 class="text-2xl font-bold mb-4">Server Update Available!</h1>
+        <p class="mb-2"><strong>Current Version:</strong> <span id="current-version">1.1.0</span></p>
+        <p class="mb-4"><strong>Latest Version:</strong> <span id="latest-version">1.2.0</span></p>
+
+        <div id="update-notification" class="hidden">
+            <p class="text-lg text-green-600 mb-2">An update is available!</p>
+            <a href="#" id="download-link" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition">Download the Update</a>
+        </div>
+
+        <div id="no-update" class="hidden">
+            <p class="text-lg text-gray-600">You are running the latest version.</p>
+        </div>
+    </div>
+
+    <script>
+        // Replace these with actual server values
+        const currentVersion = '1.1.0'; // Current server version
+        const latestVersion = '1.2.0'; // Latest version available
+        const downloadLink = 'https://example.com/download.zip'; // Link to download the update
+
+        document.getElementById('current-version').innerText = currentVersion;
+        document.getElementById('latest-version').innerText = latestVersion;
+
+        if (currentVersion < latestVersion) {
+            document.getElementById('update-notification').classList.remove('hidden');
+            document.getElementById('download-link').setAttribute('href', downloadLink);
+        } else {
+            document.getElementById('no-update').classList.remove('hidden');
+        }
+    </script>
+</body>
 </html>
