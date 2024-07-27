@@ -27,7 +27,7 @@
         const params = new URLSearchParams(window.location.search);
         const currentVersion = params.get('current_version');
         const latestVersion = params.get('latest_version');
-        const downloadLink = 'https://example.com/download.zip'; // Replace with your actual download link
+        const downloadLink = '/update.zip'; // Replace with your actual download link
 
         document.getElementById('current-version').innerText = currentVersion;
         document.getElementById('latest-version').innerText = latestVersion;
